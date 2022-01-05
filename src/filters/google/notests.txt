@@ -1,0 +1,62 @@
+{
+    "cards": {
+        "header": {
+            "title": "SonarQube complete",
+            "subtitle": project.name
+        },
+        "sections": [
+            {
+                "widgets": [
+                    {
+                        "keyValue": {
+                            "topLabel": "Status",
+                            "content": status
+                        }
+                    },
+                    {
+                        "keyValue": {
+                            "topLabel": "Security Rating",
+                            "content": $filter(qualityGate.conditions, function ($v, $i, $a) {$v.metric = "new_security_rating"}).status
+                        }
+                    },
+                    {
+                        "keyValue": {
+                            "topLabel": "New Security Hotspots",
+                            "content": $filter(qualityGate.conditions, function ($v, $i, $a) {$v.metric = "new_security_hotspots_reviewed"}).status
+                        }
+                    },
+                    {
+                        "keyValue": {
+                            "topLabel": "Reliability Rating",
+                            "content": $filter(qualityGate.conditions, function ($v, $i, $a) {$v.metric = "new_reliability_rating"}).status
+                        }
+                    },
+                    {
+                        "keyValue": {
+                            "topLabel": "Maintainability Rating",
+                            "content": $filter(qualityGate.conditions, function ($v, $i, $a) {$v.metric = "new_maintainability_rating"}).status
+                        }
+                    }
+                ]
+            },
+            {
+                "widgets": [
+                    {
+                        "buttons": [
+                            {
+                                "textButton": {
+                                    "text": "VIEW PROJECT",
+                                    "onClick": {
+                                        "openLink": {
+                                            "url": project.url
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
